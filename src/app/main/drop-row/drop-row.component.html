@@ -1,0 +1,31 @@
+<div cdkDropListGroup class="d-flex">
+  <div class="example-container2">
+    <h2>Available elements</h2>
+    <div
+      cdkDropList
+      [cdkDropListData]="items"
+      class="example-list"
+      cdkDropListSortingDisabled
+      cdkDropListOrientation="vertical"
+      (cdkDropListDropped)="drop($event)">
+      <div (cdkDragEnded)="addElem(item)" class="example-box" *ngFor="let item of items" cdkDrag>
+        <app-dinamic-component [data]="{component: item, outputs: [], inputs: []}"></app-dinamic-component>
+      </div>
+    </div>
+  </div>
+
+  <div class="example-container f-gr-1">
+    <h2>Row of form</h2>
+
+    <div
+      cdkDropList
+      [cdkDropListData]="basket"
+      class="example-list"
+      cdkDropListOrientation="horizontal"
+      (cdkDropListDropped)="drop($event)">
+      <div class="example-box" *ngFor="let item of basket" cdkDrag>
+        <app-dinamic-component [data]="{component: item, outputs: [], inputs: []}"></app-dinamic-component>
+      </div>
+    </div>
+  </div>
+</div>
