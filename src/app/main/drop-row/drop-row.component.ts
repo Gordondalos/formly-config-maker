@@ -13,6 +13,7 @@ export class DropRowComponent {
 
   items = [
     'FInputComponent',
+    'FSelectComponent',
   ];
 
   basket = [];

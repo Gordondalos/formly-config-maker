@@ -2,6 +2,7 @@ import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { FInputComponent } from '../../formly-custom-elements/f-input/f-input.component';
 import { DinamicComponentService } from '../services/dinamic-component.service';
+import { FSelectComponent } from '../../formly-custom-elements/f-select/f-select.component';
 
 
 @Component({
@@ -45,6 +46,9 @@ export class DinamicComponentComponent implements OnDestroy, OnInit {
     switch (data.component) {
       case 'FInputComponent':
         this.component = FInputComponent;
+        break;
+      case 'FSelectComponent':
+        this.component = FSelectComponent;
         break;
     }
   }
