@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FInputComponent implements OnInit {
   value: any;
+  required = false;
+  key = 'You-key-here';
 
   constructor() { }
 

@@ -1,25 +1,22 @@
 <section class="d-flex flex-column h100">
-  <mat-toolbar color="primary">
-    <button (click)="sidenav.toggle()" mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-      <mat-icon>menu</mat-icon>
-    </button>
-    <span>Formly configurator</span>
 
-    <div class="f-gr-1"></div>
-    <button (click)="addRow()" class="ml16" mat-raised-button color="accent">Add row</button>
-
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-      <mat-icon>share</mat-icon>
-    </button>
-  </mat-toolbar>
+  <app-my-toolbar
+    (addRowEvent)="addRow()"
+    (getConfigEvent)="getConfig()"
+  ></app-my-toolbar>
 
   <mat-sidenav-container class="example-container f-gr-1" >
     <mat-sidenav class="p16" #sidenav mode="side" [(opened)]="opened">
       <app-left-bar></app-left-bar>
     </mat-sidenav>
     <mat-sidenav-content class="p16">
-      <ng-container *ngFor="let item of rows">
-        <app-drop-row [numberRow]="item"></app-drop-row>
+
+      <ng-container *ngFor="let num of rows; let i = index">
+        <app-drop-row
+          [(elements)]="forms[i].elements"
+          (deleteRowEvent)="deleteRow(i)"
+          [numberRow]="num">
+        </app-drop-row>
       </ng-container>
 
     </mat-sidenav-content>

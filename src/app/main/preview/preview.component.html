@@ -1,0 +1,36 @@
+<app-my-toolbar></app-my-toolbar>
+
+<div class="d-flex">
+<!--  <div class="w-50">-->
+
+<!--  </div>-->
+  <div class="w100 p16 bg">
+    <ngx-highlight-js lang="typescript" url="assets/code/first-line.ts"></ngx-highlight-js>
+    <ng-container *ngFor="let group of forms">
+      <ngx-highlight-js lang="typescript" url="assets/code/group.start.ts"></ngx-highlight-js>
+      <ng-container *ngFor="let item of group; let i = index">
+        <ngx-highlight-js lang="typescript" url="assets/code/item.start.ts"></ngx-highlight-js>
+
+        <ngx-highlight-js lang="typescript" [code]="getKey(item)"></ngx-highlight-js>
+        <ngx-highlight-js lang="typescript" [code]="getType(item)"></ngx-highlight-js>
+        <ngx-highlight-js lang="typescript" [code]="getClassName(item, group, i)"></ngx-highlight-js>
+        <ngx-highlight-js lang="typescript" url="assets/code/templateOptions.start.ts"></ngx-highlight-js>
+        <ngx-highlight-js lang="typescript" [code]="getLabel(item)"></ngx-highlight-js>
+        <ngx-highlight-js lang="typescript" url="assets/code/floatingLablel.ts"></ngx-highlight-js>
+        <ngx-highlight-js lang="typescript" [code]="getPlaceHolder(item)"></ngx-highlight-js>
+        <ngx-highlight-js lang="typescript" [code]="getRequired(item)"></ngx-highlight-js>
+        <ng-container *ngIf="item.filter">
+          <ngx-highlight-js lang="typescript" url="assets/code/filter.ts"></ngx-highlight-js>
+        </ng-container>
+
+        <ngx-highlight-js lang="typescript" url="assets/code/templateOptions.end.ts"></ngx-highlight-js>
+        <ngx-highlight-js lang="typescript" url="assets/code/item.end.ts"></ngx-highlight-js>
+      </ng-container>
+      <ngx-highlight-js lang="typescript" url="assets/code/group.end.ts"></ngx-highlight-js>
+    </ng-container>
+
+    <ngx-highlight-js lang="typescript" url="assets/code/last-line.ts"></ngx-highlight-js>
+  </div>
+</div>
+
+

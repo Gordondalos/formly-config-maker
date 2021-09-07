@@ -1,8 +1,6 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
-import { FInputComponent } from '../../formly-custom-elements/f-input/f-input.component';
 import { DinamicComponentService } from '../services/dinamic-component.service';
-import { FSelectComponent } from '../../formly-custom-elements/f-select/f-select.component';
 
 
 @Component({
@@ -15,7 +13,7 @@ export class DinamicComponentComponent implements OnDestroy, OnInit {
 
   outputs: any;
 
-  @Input() data: { inputs: any; outputs: any; component: any; } | undefined;
+  @Input() data: { inputs: any; outputs: any; component: Component; } | undefined;
 
   component: any;
 
@@ -43,13 +41,6 @@ export class DinamicComponentComponent implements OnDestroy, OnInit {
   load(data: any) {
     this.inputs = {data: data.inputs};
     this.outputs = data.outputs;
-    switch (data.component) {
-      case 'FInputComponent':
-        this.component = FInputComponent;
-        break;
-      case 'FSelectComponent':
-        this.component = FSelectComponent;
-        break;
-    }
+    this.component = data.component;
   }
 }

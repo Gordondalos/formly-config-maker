@@ -1,6 +1,10 @@
 <div cdkDropListGroup class="d-flex">
   <div class="example-container2">
-    <h2>Available elements</h2>
+    <h2 class="d-flex">
+      Available elements
+      <div class="f-gr-1"></div>
+      <mat-icon class="pointer" (click)="deleteRow()">delete</mat-icon>
+    </h2>
     <div
       cdkDropList
       [cdkDropListData]="items"
@@ -19,11 +23,11 @@
 
     <div
       cdkDropList
-      [cdkDropListData]="basket"
+      [cdkDropListData]="elements"
       class="example-list"
       cdkDropListOrientation="horizontal"
       (cdkDropListDropped)="drop($event)">
-      <div class="example-box" *ngFor="let item of basket" cdkDrag>
+      <div class="example-box" *ngFor="let item of elements" cdkDrag>
         <app-dinamic-component [data]="{component: item, outputs: [], inputs: []}"></app-dinamic-component>
       </div>
     </div>

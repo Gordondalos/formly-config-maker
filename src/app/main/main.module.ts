@@ -16,12 +16,19 @@ import { FInputComponent } from '../formly-custom-elements/f-input/f-input.compo
 import { DinamicComponentComponent } from './dinamic-component/dinamic-component.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { PreviewComponent } from './preview/preview.component';
+import { MyToolbarComponent } from './my-toolbar/my-toolbar.component';
+import { NGX_HIGHLIGHT_JS_DEFAULT_THEME, NgxHighlightJsModule } from '@nowzoo/ngx-highlight-js';
 
 
 const routes: Routes = [
   {
     path: '',
     component: MainComponent
+  },
+  {
+    path: 'preview',
+    component: PreviewComponent
   }
 ];
 
@@ -31,7 +38,9 @@ const routes: Routes = [
     LeftBarComponent,
     DropRowComponent,
     FInputComponent,
-    DinamicComponentComponent
+    DinamicComponentComponent,
+    PreviewComponent,
+    MyToolbarComponent
   ],
   imports: [
     CommonModule,
@@ -46,10 +55,14 @@ const routes: Routes = [
     DynamicIoModule,
     DynamicModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    NgxHighlightJsModule.forRoot()
   ],
   entryComponents: [
     FInputComponent
+  ],
+  providers: [
+    {provide: NGX_HIGHLIGHT_JS_DEFAULT_THEME, useValue: 'dracula'}
   ]
 })
 export class MainModule {

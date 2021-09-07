@@ -12,7 +12,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { FSelectComponent } from './formly-custom-elements/f-select/f-select.component';
 import { MatSelectModule } from '@angular/material/select';
-
+import { NGX_HIGHLIGHT_JS_DEFAULT_THEME, NgxHighlightJsModule } from '@nowzoo/ngx-highlight-js';
 
 @NgModule({
   declarations: [
@@ -26,12 +26,16 @@ import { MatSelectModule } from '@angular/material/select';
     MatSidenavModule,
     FormsModule,
     MatFormFieldModule,
+    NgxHighlightJsModule.forRoot(),
     MatInputModule,
     MatIconModule,
     MatButtonModule,
     MatSelectModule,
   ],
-  providers: [],
+  providers: [
+
+  ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

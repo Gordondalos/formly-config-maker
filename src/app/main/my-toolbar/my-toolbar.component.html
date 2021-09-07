@@ -1,0 +1,15 @@
+<mat-toolbar color="primary">
+  <span>Formly configurator</span>
+
+  <div class="f-gr-1"></div>
+  <ng-container *ngIf="!preview">
+    <button (click)="addRow()" class="ml16" mat-raised-button color="accent">Add row</button>
+    <button (click)="getConfig()" class="ml16" mat-raised-button color="accent">Get config</button>
+  </ng-container>
+
+  <ng-container *ngIf="preview">
+    <button (click)="goToForm()" class="ml16" mat-raised-button color="accent">Go to form</button>
+  </ng-container>
+
+
+</mat-toolbar>

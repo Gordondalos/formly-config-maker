@@ -1,5 +1,7 @@
-import { Component, Input } from '@angular/core';
-import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import { FInputComponent } from '../../formly-custom-elements/f-input/f-input.component';
+import { FSelectComponent } from '../../formly-custom-elements/f-select/f-select.component';
 
 
 @Component({
@@ -8,15 +10,21 @@ import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/dr
   styleUrls: ['./drop-row.component.scss']
 })
 export class DropRowComponent {
+
+  @Input() elements = [];
+  @Output() elementsChange = new EventEmitter();
+
+
   @Input() numberRow: any;
+  @Output() deleteRowEvent = new EventEmitter();
 
 
-  items = [
-    'FInputComponent',
-    'FSelectComponent',
+  items: any = [
+    FInputComponent,
+    FSelectComponent,
   ];
 
-  basket = [];
+
 
   drop(event: any) {
     if (event.previousContainer === event.container) {
@@ -29,7 +37,11 @@ export class DropRowComponent {
     }
   }
 
-  addElem(item: string) {
+  addElem(item: Component) {
     this.items.push(item)
+  }
+
+  deleteRow() {
+    this.deleteRowEvent.emit()
   }
 }
