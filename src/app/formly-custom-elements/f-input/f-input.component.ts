@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-f-input',
@@ -7,12 +7,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FInputComponent implements OnInit {
   value: any;
-  required = false;
-  key = 'You-key-here';
+  req = false;
+  key = '';
 
-  constructor() { }
+  @Input() uuid: any;
+
+  @Output() requireChange = new EventEmitter();
+  @Output() keyChange = new EventEmitter();
+
+  constructor() {
+  }
 
   ngOnInit() {
+    console.log(this.requireChange);
+    console.log(this.keyChange);
+    console.log(this.uuid);
   }
 
 }

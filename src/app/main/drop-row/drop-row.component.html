@@ -12,8 +12,11 @@
       cdkDropListSortingDisabled
       cdkDropListOrientation="vertical"
       (cdkDropListDropped)="drop($event)">
-      <div (cdkDragEnded)="addElem(item)" class="example-box" *ngFor="let item of items" cdkDrag>
-        <app-dinamic-component [data]="{component: item, outputs: [], inputs: []}"></app-dinamic-component>
+      <div (cdkDragEnded)="addElem(item)" class="example-box mb16" *ngFor="let item of items" cdkDrag>
+        <app-dinamic-component [data]="{
+          component: item,
+          outputs: [],
+          inputs: []}"></app-dinamic-component>
       </div>
     </div>
   </div>
@@ -27,8 +30,15 @@
       class="example-list"
       cdkDropListOrientation="horizontal"
       (cdkDropListDropped)="drop($event)">
-      <div class="example-box" *ngFor="let item of elements" cdkDrag>
-        <app-dinamic-component [data]="{component: item, outputs: [], inputs: []}"></app-dinamic-component>
+      <div class="example-box" *ngFor="let item of elements;" cdkDrag>
+        <app-dinamic-component [data]="{
+        component: item,
+        outputs:  {
+            keyChange: keyChange,
+            requireChange: requireChange
+            },
+            inputs: {}
+            }"></app-dinamic-component>
       </div>
     </div>
   </div>

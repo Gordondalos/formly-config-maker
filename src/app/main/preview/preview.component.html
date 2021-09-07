@@ -19,7 +19,7 @@
         <ngx-highlight-js lang="typescript" url="assets/code/floatingLablel.ts"></ngx-highlight-js>
         <ngx-highlight-js lang="typescript" [code]="getPlaceHolder(item)"></ngx-highlight-js>
         <ngx-highlight-js lang="typescript" [code]="getRequired(item)"></ngx-highlight-js>
-        <ng-container *ngIf="item.filter">
+        <ng-container *ngIf="item.config.templateOptions.filter">
           <ngx-highlight-js lang="typescript" url="assets/code/filter.ts"></ngx-highlight-js>
         </ng-container>
 

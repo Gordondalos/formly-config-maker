@@ -13,6 +13,7 @@ export class DinamicComponentComponent implements OnDestroy, OnInit {
 
   outputs: any;
 
+
   @Input() data: { inputs: any; outputs: any; component: Component; } | undefined;
 
   component: any;
@@ -38,9 +39,14 @@ export class DinamicComponentComponent implements OnDestroy, OnInit {
     this.onDestroy$.complete();
   }
 
+
   load(data: any) {
-    this.inputs = {data: data.inputs};
-    this.outputs = data.outputs;
+    this.inputs = {...data.inputs, element: data.component.uuid};
+    this.outputs = {
+      keyChange: this.data?.outputs.keyChange,
+      requireChange: this.data?.outputs.requireChange,
+    };
     this.component = data.component;
+    console.log(this.outputs);
   }
 }
