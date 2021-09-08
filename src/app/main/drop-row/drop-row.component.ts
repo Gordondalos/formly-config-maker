@@ -7,6 +7,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { NgForm } from '@angular/forms';
 import { FAutocompleteComponent } from '../../formly-custom-elements/f-autocomplete/f-autocomplete.component';
 import { sortBy, unionBy } from 'lodash-es';
+import { MainService } from '../services/main.service';
 
 @Component({
   selector: 'app-drop-row',
@@ -31,24 +32,21 @@ export class DropRowComponent implements OnInit {
   };
 
 
-  items: { uuid: string, type: any }[] = [
-    {uuid: uuidv4(), type: FInputComponent},
-    {uuid: uuidv4(), type: FSelectComponent},
-    {uuid: uuidv4(), type: FAutocompleteComponent}
-  ];
+  items: any = []
 
 
-  constructor() {
+  constructor(
+    private mainService: MainService
+  ) {
 
   }
 
   ngOnInit() {
-    this.items = unionBy(sortBy(this.items, 'type'), 'type');
+    this.items = unionBy(sortBy(this.mainService.getItems(), 'type'), 'type');
   }
 
 
   drop(event: any) {
-
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
@@ -57,7 +55,6 @@ export class DropRowComponent implements OnInit {
         event.previousIndex,
         event.currentIndex);
     }
-
   }
 
   addElem(item: any) {
