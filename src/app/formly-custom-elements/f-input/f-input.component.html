@@ -1,21 +1,11 @@
 <mat-form-field class="example-form-field" appearance="outline">
-  <mat-label>Clearable input</mat-label>
+  <mat-label>Input example</mat-label>
   <input matInput type="text" [(ngModel)]="value">
   <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
     <mat-icon>close</mat-icon>
   </button>
 </mat-form-field>
 
-<hr>
 
-<div class="d-flex align-items-center">
-  <mat-checkbox class="f-gr-1"
-                (ngModelChange)="requireChange.emit({req, element: uuid})"
-                [(ngModel)]="req">Required</mat-checkbox>
-  <mat-form-field class="ml16" appearance="standard">
-    <mat-label>Key</mat-label>
-    <input matInput type="text" required
-           [(ngModel)]="key"
-           (ngModelChange)="keyChange.emit({key, element: uuid})" >
-  </mat-form-field>
-</div>
+
+

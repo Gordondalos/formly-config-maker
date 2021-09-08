@@ -12,7 +12,7 @@
     <mat-sidenav-content class="p16">
 
       <ng-container *ngFor="let num of rows; let i = index">
-        <app-drop-row
+        <app-drop-row *ngIf="forms && forms[i]"
           [(elements)]="forms[i].elements"
           (deleteRowEvent)="deleteRow(i)"
           [numberRow]="num">

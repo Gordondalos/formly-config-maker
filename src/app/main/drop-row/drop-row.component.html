@@ -13,10 +13,14 @@
       cdkDropListOrientation="vertical"
       (cdkDropListDropped)="drop($event)">
       <div (cdkDragEnded)="addElem(item)" class="example-box mb16" *ngFor="let item of items" cdkDrag>
-        <app-dinamic-component [data]="{
-          component: item,
+        <div class="w100" [id]="item.uuid">
+          <app-dinamic-component
+            [data]="{
+          component: item.type,
           outputs: [],
-          inputs: []}"></app-dinamic-component>
+          inputs: {uuid: item.uuid}}"></app-dinamic-component>
+
+        </div>
       </div>
     </div>
   </div>
@@ -24,22 +28,34 @@
   <div class="example-container f-gr-1">
     <h2>Row of form</h2>
 
-    <div
-      cdkDropList
-      [cdkDropListData]="elements"
-      class="example-list"
-      cdkDropListOrientation="horizontal"
-      (cdkDropListDropped)="drop($event)">
-      <div class="example-box" *ngFor="let item of elements;" cdkDrag>
-        <app-dinamic-component [data]="{
-        component: item,
+
+      <div
+        cdkDropList
+        [cdkDropListData]="elements"
+        class="example-list"
+        cdkDropListOrientation="horizontal"
+        (cdkDropListDropped)="drop($event)">
+        <div class="example-box" *ngFor="let item of elements;" cdkDrag>
+
+          <div class="w100" [id]="item.uuid">
+
+            <app-dinamic-component [data]="{
+        component: item.type,
         outputs:  {
             keyChange: keyChange,
             requireChange: requireChange
             },
-            inputs: {}
+            inputs: {uuid: item.uuid}
             }"></app-dinamic-component>
+            <div class="p16">
+              <app-field-properties
+                (requireChange)="requireChange($event, item)"
+                (keyChange)="keyChange($event, item)"></app-field-properties>
+            </div>
+          </div>
+
+        </div>
       </div>
-    </div>
+
   </div>
 </div>

@@ -19,6 +19,7 @@ import { MatInputModule } from '@angular/material/input';
 import { PreviewComponent } from './preview/preview.component';
 import { MyToolbarComponent } from './my-toolbar/my-toolbar.component';
 import { NGX_HIGHLIGHT_JS_DEFAULT_THEME, NgxHighlightJsModule } from '@nowzoo/ngx-highlight-js';
+import { FieldPropertiesComponent } from '../field-properties/field-properties.component';
 
 
 const routes: Routes = [
@@ -40,7 +41,8 @@ const routes: Routes = [
     FInputComponent,
     DinamicComponentComponent,
     PreviewComponent,
-    MyToolbarComponent
+    MyToolbarComponent,
+    FieldPropertiesComponent,
   ],
   imports: [
     CommonModule,

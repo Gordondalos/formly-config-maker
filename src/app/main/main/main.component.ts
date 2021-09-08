@@ -12,8 +12,10 @@ export class MainComponent implements OnInit {
   opened: boolean = false;
   rows = [0];
   forms: any = [
-    {elements: []}
-  ];
+    {
+      elements:[]
+    }
+  ]
 
   options: any = [
     { name: 'Первый', key: '1' },
@@ -39,8 +41,6 @@ export class MainComponent implements OnInit {
   }
 
   getConfig() {
-    console.log(this.rows);
-    console.log(this.forms);
     const form = this.drawForm();
     localStorage.setItem('myForms', JSON.stringify(form));
     this.router.navigateByUrl('/preview');
@@ -49,12 +49,12 @@ export class MainComponent implements OnInit {
 
   drawForm() {
     const groups: any = [];
-    each(this.forms, (group, index) => {
+    each(this.forms, (group: any, index: number) => {
       groups[index] = [];
       for (let element of group.elements) {
         groups[index].push({
-          element: element.name,
-          config: this.getConfigElemt(element.name),
+          element: element.type.name,
+          config: this.getConfigElemt(element.type.name, element.key, element.requierd),
           additionalyInfo: this.getAdditionalyInfo(element.name)
         });
       }
@@ -66,28 +66,41 @@ export class MainComponent implements OnInit {
     this.rows.splice(index, 1);
   }
 
-  private getConfigElemt(elementName: any): any {
+  private getConfigElemt(elementName: any, key = 'someKey', required = false): any {
     switch (elementName) {
       case 'FInputComponent': return {
-        key: 'title',
+        key: key,
         type: 'input',
         className: 'w-50 mr8',
         templateOptions: {
           label: 'label',
           floatingLabel: 'always',
           placeholder: 'Placeholder',
-          required: true,
+          required: required,
           appearance: 'outline',
         }
       }
       case 'FSelectComponent': return {
-        key: 'filial',
+        key: key,
         type: 'select',
         className: 'w-50 mr8',
         templateOptions: {
           label: 'label',
           placeholder: 'placeholder',
-          required: false,
+          required: required,
+          appearance: 'outline',
+          floatLabel: 'always',
+          filter: this.filter,
+        },
+      }
+      case 'FAutocompleteComponent': return {
+        key: key,
+        type: 'autocomplete',
+        className: 'w-50 mr8',
+        templateOptions: {
+          label: 'label',
+          placeholder: 'placeholder',
+          required: required,
           appearance: 'outline',
           floatLabel: 'always',
           filter: this.filter,

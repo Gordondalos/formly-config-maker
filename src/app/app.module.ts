@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSidenavModule } from '@angular/material/sidenav';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
@@ -13,11 +13,15 @@ import { MatButtonModule } from '@angular/material/button';
 import { FSelectComponent } from './formly-custom-elements/f-select/f-select.component';
 import { MatSelectModule } from '@angular/material/select';
 import { NGX_HIGHLIGHT_JS_DEFAULT_THEME, NgxHighlightJsModule } from '@nowzoo/ngx-highlight-js';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { FAutocompleteComponent } from './formly-custom-elements/f-autocomplete/f-autocomplete.component';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 @NgModule({
   declarations: [
     AppComponent,
     FSelectComponent,
+    FAutocompleteComponent,
   ],
   imports: [
     BrowserModule,
@@ -31,6 +35,9 @@ import { NGX_HIGHLIGHT_JS_DEFAULT_THEME, NgxHighlightJsModule } from '@nowzoo/ng
     MatIconModule,
     MatButtonModule,
     MatSelectModule,
+    MatCheckboxModule,
+    MatAutocompleteModule,
+    ReactiveFormsModule,
   ],
   providers: [
 

@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./f-select.component.scss']
 })
 export class FSelectComponent implements OnInit {
-  selected = 'option2';
+  selected = '';
 
   constructor() {
   }

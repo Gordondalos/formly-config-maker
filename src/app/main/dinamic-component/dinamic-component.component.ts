@@ -47,6 +47,5 @@ export class DinamicComponentComponent implements OnDestroy, OnInit {
       requireChange: this.data?.outputs.requireChange,
     };
     this.component = data.component;
-    console.log(this.outputs);
   }
 }
