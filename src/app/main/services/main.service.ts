@@ -3,6 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { FInputComponent } from '../../formly-custom-elements/f-input/f-input.component';
 import { FSelectComponent } from '../../formly-custom-elements/f-select/f-select.component';
 import { FAutocompleteComponent } from '../../formly-custom-elements/f-autocomplete/f-autocomplete.component';
+import { FCheckboxComponent } from '../../formly-custom-elements/f-checkbox/f-checkbox.component';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,8 @@ export class MainService {
   items: { uuid: string, type: any }[] = [
     {uuid: uuidv4(), type: FInputComponent},
     {uuid: uuidv4(), type: FSelectComponent},
-    {uuid: uuidv4(), type: FAutocompleteComponent}
+    {uuid: uuidv4(), type: FAutocompleteComponent},
+    {uuid: uuidv4(), type: FCheckboxComponent}
   ];
 
   constructor() {
@@ -33,8 +35,8 @@ export class MainService {
     switch (elementName) {
       case 'FInputComponent':
         return {
-          key: key,
-          type: 'input',
+          key: `'${key}'`,
+          type: `'input'`,
           className: 'w-50 mr8',
           templateOptions: {
             label: 'label',
@@ -46,8 +48,8 @@ export class MainService {
         };
       case 'FSelectComponent':
         return {
-          key: key,
-          type: 'select',
+          key: `'${key}'`,
+          type: `'select'`,
           className: 'w-50 mr8',
           templateOptions: {
             label: 'label',
@@ -58,10 +60,21 @@ export class MainService {
             filter: true,
           },
         };
+      case 'FCheckboxComponent':
+        return {
+          key: `'${key}'`,
+          type: `'checkbox'`,
+          className: 'w-50 mr8',
+          defaultValue: false,
+          templateOptions: {
+            label: `label`,
+            value: false,
+          },
+        };
       case 'FAutocompleteComponent':
         return {
-          key: key,
-          type: 'autocomplete',
+          key: `'${key}'`,
+          type: `'autocomplete'`,
           className: 'w-50 mr8',
           templateOptions: {
             label: 'label',
@@ -78,31 +91,7 @@ export class MainService {
   // filter = '(term: any) => of(term ? this.filterTypes(term, this.normalize(this.options)) : this.normalize(this.options).slice())';
 
 
-  // normalize(arr: any): any {
-  //   const newArr = [];
-  //   for (const item of arr) {
-  //     newArr.push({ label: item.name, value: item.key });
-  //   }
-  //   return newArr;
-  // }
-  //
-  // filterTypes(val: any, arr: any) {
-  //   if (typeof val === 'string') {
-  //     return arr.filter((item: any) => {
-  //       return item.label.toLowerCase().indexOf(val.toLowerCase()) !== -1;
-  //     });
-  //   } else {
-  //     return arr.filter((item: any) => {
-  //       try {
-  //         return item.label.toLowerCase().indexOf(val.label.toLowerCase()) !== -1;
-  //       } catch (e) {
-  //         return false;
-  //       }
-  //     });
-  //   }
-  //
-  // }
-  //
+
   //  getAdditionalyInfo(name: string): any {
   //   switch (name) {
   //     case 'FInputComponent': return {};
@@ -114,4 +103,6 @@ export class MainService {
   //
   //   }
   // }
+
+
 }

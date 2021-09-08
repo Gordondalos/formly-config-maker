@@ -1,15 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
+import { of } from 'rxjs';
 
 @Component({
   selector: 'app-preview',
   templateUrl: './preview.component.html',
   styleUrls: ['./preview.component.scss']
 })
-export class PreviewComponent implements OnInit {
+export class PreviewComponent implements OnInit, AfterViewInit {
 
   forms: any;
 
+  form = new FormGroup({});
+  model = {};
+  fields: any;
+
   constructor() {
+  }
+
+  onSubmit() {
+    console.log(this.model);
   }
 
   ngOnInit(): void {
@@ -20,9 +30,60 @@ export class PreviewComponent implements OnInit {
     this.drawConfig();
   }
 
+  ngAfterViewInit() {
+    // // @ts-ignore
+    // setTimeout(() => {
+    //   let config: any = document.getElementById('form');
+    //   if(config){
+    //     config = config.innerText.replaceAll('\n', '')
+    //   }
+    //   console.log(config);
+    //
+    //   const str2obj = (config: string) => {
+    //     return config
+    //       .split(',')
+    //       .map(keyVal => {
+    //         return keyVal
+    //           .split(':')
+    //           .map((it) => it.trim())
+    //       })
+    //       .reduce((accumulator: any, currentValue) => {
+    //         accumulator[currentValue[0]] = currentValue[1]
+    //         return accumulator
+    //       }, {})
+    //   }
+    //
+    //
+    //   console.log(str2obj(config))
+    //   this.fields = [
+    //     {
+    //       fieldGroupClassName: 'd-flex w100',
+    //       fieldGroup: [
+    //         {
+    //           key: 'zxczxc',
+    //           type: 'select',
+    //           className: 'w100',
+    //           templateOptions: {
+    //             label: 'label',
+    //             floatingLabel: 'always',
+    //             placeholder: 'placeholder',
+    //             required: false,
+    //             filter: (term: any) => of(term ? this.filterTypes(term,
+    //               this.normalize(this.options)) : this.normalize(this.options).slice()),
+    //           },
+    //         },
+    //       ],
+    //     },
+    //   ];
+    // }, 3000)
+
+  }
+
   drawConfig() {
     console.log(this.forms);
   }
+
+
 
 
   getKey(item: any): string {
@@ -89,4 +150,52 @@ export class PreviewComponent implements OnInit {
   getRequired(item: any) {
     return `            required: ${item.config.templateOptions.required},`;
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  options: any = [
+    { name: 'Первый', key: '1' },
+    { name: 'Второй', key: '2' },
+    { name: 'Третий', key: '3' },
+  ];
+
+
+  normalize(arr: any): any {
+    const newArr = [];
+    for (const item of arr) {
+      newArr.push({ label: item.name, value: item.key });
+    }
+    return newArr;
+  }
+
+  filterTypes(val: any, arr: any) {
+    if (typeof val === 'string') {
+      return arr.filter((item: any) => {
+        return item.label.toLowerCase().indexOf(val.toLowerCase()) !== -1;
+      });
+    } else {
+      return arr.filter((item: any) => {
+        try {
+          return item.label.toLowerCase().indexOf(val.label.toLowerCase()) !== -1;
+        } catch (e) {
+          return false;
+        }
+      });
+    }
+
+  }
+
+
+
 }

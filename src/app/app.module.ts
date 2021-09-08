@@ -16,12 +16,16 @@ import { NGX_HIGHLIGHT_JS_DEFAULT_THEME, NgxHighlightJsModule } from '@nowzoo/ng
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { FAutocompleteComponent } from './formly-custom-elements/f-autocomplete/f-autocomplete.component';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { FCheckboxComponent } from './formly-custom-elements/f-checkbox/f-checkbox.component';
+import { FormlyModule } from '@ngx-formly/core';
+import { FormlyMaterialModule } from '@ngx-formly/material';
 
 @NgModule({
   declarations: [
     AppComponent,
     FSelectComponent,
     FAutocompleteComponent,
+    FCheckboxComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,6 +42,9 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     MatCheckboxModule,
     MatAutocompleteModule,
     ReactiveFormsModule,
+    FormlyModule.forRoot(),
+    FormlyModule.forRoot({ extras: { lazyRender: true } }),
+    FormlyMaterialModule
   ],
   providers: [
 

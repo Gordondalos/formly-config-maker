@@ -7,7 +7,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LeftBarComponent } from './left-bar/left-bar.component';
 import { DropRowComponent } from './drop-row/drop-row.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
@@ -20,6 +20,7 @@ import { PreviewComponent } from './preview/preview.component';
 import { MyToolbarComponent } from './my-toolbar/my-toolbar.component';
 import { NGX_HIGHLIGHT_JS_DEFAULT_THEME, NgxHighlightJsModule } from '@nowzoo/ngx-highlight-js';
 import { FieldPropertiesComponent } from '../field-properties/field-properties.component';
+import { FormlyModule } from '@ngx-formly/core';
 
 
 const routes: Routes = [
@@ -58,7 +59,9 @@ const routes: Routes = [
     DynamicModule,
     MatFormFieldModule,
     MatInputModule,
-    NgxHighlightJsModule.forRoot()
+    NgxHighlightJsModule.forRoot(),
+    ReactiveFormsModule,
+    FormlyModule
   ],
   entryComponents: [
     FInputComponent
