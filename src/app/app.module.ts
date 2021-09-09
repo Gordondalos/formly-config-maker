@@ -19,6 +19,17 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { FCheckboxComponent } from './formly-custom-elements/f-checkbox/f-checkbox.component';
 import { FormlyModule } from '@ngx-formly/core';
 import { FormlyMaterialModule } from '@ngx-formly/material';
+import { FDatepickerComponent } from './formly-custom-elements/f-datepicker/f-datepicker.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { FRangeDatepickerComponent } from './formly-custom-elements/f-range-datepicker/f-range-datepicker.component';
+import { FRadioComponent } from './formly-custom-elements/f-radio/f-radio.component';
+import { MatRadioModule } from '@angular/material/radio';
+import { FTextareaComponent } from './formly-custom-elements/f-textarea/f-textarea.component';
+import { FToggleComponent } from './formly-custom-elements/f-toggle/f-toggle.component';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { FSlideToggleComponent } from './formly-custom-elements/f-slide-toggle/f-slide-toggle.component';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 @NgModule({
   declarations: [
@@ -26,6 +37,12 @@ import { FormlyMaterialModule } from '@ngx-formly/material';
     FSelectComponent,
     FAutocompleteComponent,
     FCheckboxComponent,
+    FDatepickerComponent,
+    FRangeDatepickerComponent,
+    FRadioComponent,
+    FTextareaComponent,
+    FToggleComponent,
+    FSlideToggleComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,12 +60,15 @@ import { FormlyMaterialModule } from '@ngx-formly/material';
     MatAutocompleteModule,
     ReactiveFormsModule,
     FormlyModule.forRoot(),
-    FormlyModule.forRoot({ extras: { lazyRender: true } }),
-    FormlyMaterialModule
+    FormlyModule.forRoot({extras: {lazyRender: true}}),
+    FormlyMaterialModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatRadioModule,
+    MatButtonToggleModule,
+    MatSlideToggleModule,
   ],
-  providers: [
-
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {
