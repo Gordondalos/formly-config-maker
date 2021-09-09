@@ -1,18 +1,7 @@
 <app-my-toolbar></app-my-toolbar>
 
 <div class="d-flex">
-  <div class="">
-
-<!--    <ng-container *ngIf="fields">-->
-<!--      <form [formGroup]="form" (ngSubmit)="onSubmit()">-->
-<!--        <formly-form [form]="form" [fields]="fields" [model]="model"></formly-form>-->
-<!--        <button type="submit" mat-raised-button color="primary">Submit</button>-->
-<!--      </form>-->
-<!--    </ng-container>-->
-
-
-  </div>
-  <div id="form" class="w100 p16 bg">
+  <div id="form" class="w-50 p16 bg">
     <ngx-highlight-js lang="typescript" url="assets/code/first-line.ts"></ngx-highlight-js>
     <ng-container *ngFor="let group of forms">
       <ngx-highlight-js lang="typescript" url="assets/code/group.start.ts"></ngx-highlight-js>
@@ -38,6 +27,20 @@
     </ng-container>
 
     <ngx-highlight-js lang="typescript" url="assets/code/last-line.ts"></ngx-highlight-js>
+  </div>
+  <div class="w-50 bg">
+    <ngx-highlight-js lang="typescript" url="assets/code/formly-insider.ts"></ngx-highlight-js>
+  </div>
+</div>
+
+<div class="d-flex">
+
+  <div class="w-50 bg p16">
+    <ngx-highlight-js lang="typescript" url="assets/code/additionaly-code.ts"></ngx-highlight-js>
+  </div>
+
+  <div class="w-50 bg p16">
+    <ngx-highlight-js lang="scss" url="assets/code/form-styles.scss"></ngx-highlight-js>
   </div>
 </div>
 
